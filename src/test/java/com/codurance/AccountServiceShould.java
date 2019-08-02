@@ -21,4 +21,17 @@ public class AccountServiceShould {
 
         verify(balanceListMock).add(amount);
     }
+
+
+    @Test
+    void withdraw_amount() {
+        int amount = 10;
+        List<Integer> balanceListMock = mock(List.class);
+        ConsoleWrite consoleMock = mock(ConsoleWrite.class);
+
+        AccountService accountService = new AccountService(consoleMock, balanceListMock);
+        accountService.deposit(amount);
+
+        verify(balanceListMock).add(-amount);
+    }
 }
