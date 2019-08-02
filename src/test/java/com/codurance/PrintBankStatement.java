@@ -19,7 +19,7 @@ public class PrintBankStatement {
         AccountService accountService = new AccountService(consoleMock, balance);
         accountService.deposit(1000);
         accountService.deposit(2000);
-        accountService.withdrawal(500);
+        accountService.withdraw(500);
         accountService.printStatement();
 
 

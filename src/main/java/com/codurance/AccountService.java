@@ -16,7 +16,7 @@ public class AccountService {
         balanceList.add(amount);
     }
 
-    public void withdrawal(int amount) {
+    public void withdraw(int amount) {
         balanceList.add(-amount);
     }
 

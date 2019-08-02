@@ -30,7 +30,7 @@ public class AccountServiceShould {
         ConsoleWrite consoleMock = mock(ConsoleWrite.class);
 
         AccountService accountService = new AccountService(consoleMock, balanceListMock);
-        accountService.withdrawal(amount);
+        accountService.withdraw(amount);
 
         verify(balanceListMock).add(-amount);
     }
