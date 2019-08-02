@@ -2,7 +2,9 @@ package com.codurance;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
-import org.mockito.Mock;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Mockito.*;
 
@@ -13,7 +15,8 @@ public class PrintBankStatement {
     void AcceptanceTest() {
         ConsoleWrite consoleMock = mock(ConsoleWrite.class);
 
-        AccountService accountService = new AccountService(consoleMock);
+        List<Integer> balance = new ArrayList<>();
+        AccountService accountService = new AccountService(consoleMock, balance);
         accountService.deposit(1000);
         accountService.deposit(2000);
         accountService.withdrawal(500);
