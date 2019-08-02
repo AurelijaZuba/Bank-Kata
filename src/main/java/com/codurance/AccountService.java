@@ -17,7 +17,7 @@ public class AccountService {
     }
 
     public void withdrawal(int amount) {
-        throw new UnsupportedOperationException();
+        balanceList.add(-amount);
     }
 
     public void printStatement() {
