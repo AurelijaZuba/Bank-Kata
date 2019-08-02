@@ -2,6 +2,7 @@ package com.codurance;
 
 import org.junit.jupiter.api.Test;
 
+import java.sql.Statement;
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
@@ -33,5 +34,17 @@ public class AccountServiceShould {
         accountService.withdraw(amount);
 
         verify(balanceListMock).add(-amount);
+    }
+
+    @Test
+    void printStatement() {
+        List<Integer> balanceListMock = mock(List.class);
+        BankStatement bankStatement = mock(BankStatement.class);
+        ConsoleWrite consoleMock = mock(ConsoleWrite.class);
+
+        AccountService accountService = new AccountService(consoleMock, balanceListMock);
+        accountService.printStatement();
+
+        verify(bankStatement).generate(balanceListMock);
     }
 }
