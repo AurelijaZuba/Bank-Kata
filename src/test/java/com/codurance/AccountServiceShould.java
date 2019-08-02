@@ -11,42 +11,40 @@ import static org.mockito.Mockito.verify;
 public class AccountServiceShould {
 
 
-    private List<Integer> balanceListMock;
+    private List<Integer> transactionListMock;
     private ConsoleWrite consoleMock;
     private BankStatement bankStatement;
     private AccountService accountService;
 
     @BeforeEach
     void setUp() {
-        balanceListMock = mock(List.class);
+        transactionListMock = mock(List.class);
         consoleMock = mock(ConsoleWrite.class);
         bankStatement = mock(BankStatement.class);
-        accountService = new AccountService(consoleMock, balanceListMock, bankStatement);
+        accountService = new AccountService(consoleMock, transactionListMock, bankStatement);
     }
 
     @Test
     void deposit_amount() {
         int amount = 10;
-
         accountService.deposit(amount);
 
-        verify(balanceListMock).add(amount);
+        verify(transactionListMock).add(amount);
     }
 
 
     @Test
     void withdraw_amount() {
         int amount = 10;
-
         accountService.withdraw(amount);
 
-        verify(balanceListMock).add(-amount);
+        verify(transactionListMock).add(-amount);
     }
 
     @Test
     void printStatement() {
         accountService.printStatement();
 
-        verify(bankStatement).generate(balanceListMock);
+        verify(bankStatement).generate(transactionListMock);
     }
 }

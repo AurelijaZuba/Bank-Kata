@@ -14,10 +14,10 @@ public class PrintBankStatement {
     @Test
     void AcceptanceTest() {
         ConsoleWrite consoleMock = mock(ConsoleWrite.class);
-        List<Integer> balance = new ArrayList<>();
+        List<Integer> transactions = new ArrayList<>();
         BankStatement bankStatement = new BankStatement();
 
-        AccountService accountService = new AccountService(consoleMock, balance, bankStatement);
+        AccountService accountService = new AccountService(consoleMock, transactions, bankStatement);
         accountService.deposit(1000);
         accountService.deposit(2000);
         accountService.withdraw(500);
