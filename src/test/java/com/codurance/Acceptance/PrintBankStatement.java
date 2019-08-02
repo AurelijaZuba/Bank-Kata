@@ -1,5 +1,8 @@
-package com.codurance;
+package com.codurance.Acceptance;
 
+import com.codurance.AccountService;
+import com.codurance.BankStatement;
+import com.codurance.ConsoleWrite;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 

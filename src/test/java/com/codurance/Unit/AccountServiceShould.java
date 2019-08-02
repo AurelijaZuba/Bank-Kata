@@ -1,5 +1,8 @@
-package com.codurance;
+package com.codurance.Unit;
 
+import com.codurance.AccountService;
+import com.codurance.BankStatement;
+import com.codurance.ConsoleWrite;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
