@@ -19,4 +19,8 @@ public class AccountService {
     public void withdrawal(int amount) {
         throw new UnsupportedOperationException();
     }
+
+    public void printStatement() {
+        throw new UnsupportedOperationException();
+    }
 }

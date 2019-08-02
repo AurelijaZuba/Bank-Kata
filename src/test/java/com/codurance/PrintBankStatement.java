@@ -20,6 +20,7 @@ public class PrintBankStatement {
         accountService.deposit(1000);
         accountService.deposit(2000);
         accountService.withdrawal(500);
+        accountService.printStatement();
 
 
         InOrder inOrder = inOrder(consoleMock);
