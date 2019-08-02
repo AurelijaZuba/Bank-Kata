@@ -13,7 +13,7 @@ public class AccountService {
     }
 
     public void deposit(int amount) {
-        throw new UnsupportedOperationException();
+        balanceList.add(amount);
     }
 
     public void withdrawal(int amount) {
