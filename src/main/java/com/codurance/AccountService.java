@@ -3,12 +3,12 @@ package com.codurance;
 import java.util.List;
 
 public class AccountService {
-    private ConsoleWrite consoleMock;
+    private ConsoleWrite console;
     private List<Integer> transactions;
     private BankStatement bankStatement;
 
-    public AccountService(ConsoleWrite writeline, List<Integer> transactions, BankStatement bankStatement) {
-        this.consoleMock = writeline;
+    public AccountService(ConsoleWrite console, List<Integer> transactions, BankStatement bankStatement) {
+        this.console = console;
         this.transactions = transactions;
         this.bankStatement = bankStatement;
     }
@@ -22,6 +22,11 @@ public class AccountService {
     }
 
     public void printStatement() {
-        bankStatement.generate(transactions);
+        List<String> statementLines = bankStatement.generate(transactions);
+
+        System.out.println(statementLines);
+        for (String line : statementLines) {
+            console.print(line);
+        }
     }
 }
