@@ -24,7 +24,8 @@ public class TransactionRecord implements Iterable<Transaction>{
     }
 
     public void addWithdraw(int amount) {
-        transactions.add(new Transaction(clock.now(), 20, 0));
+        updateBalance(-amount);
+        transactions.add(new Transaction(clock.now(), -amount, balance));
     }
 
     public boolean hasTransactions() {
