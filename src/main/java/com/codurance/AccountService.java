@@ -43,6 +43,6 @@ public class AccountService {
     }
 
     public void withdraw1(int amount) {
-        new UnsupportedOperationException();
+        this.transactionRecord.addWithdraw(amount);
     }
 }
