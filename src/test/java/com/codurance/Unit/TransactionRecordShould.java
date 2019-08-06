@@ -2,6 +2,7 @@ package com.codurance.Unit;
 
 import com.codurance.Transaction;
 import com.codurance.TransactionRecord;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -15,36 +16,36 @@ import static org.mockito.Mockito.verify;
 public class TransactionRecordShould {
 
     public static final int AMOUNT = 30;
+    private List<Transaction> transactionsListMock;
+
+    @BeforeEach
+    void setUp() {
+        transactionsListMock = mock(List.class);
+    }
 
     @Test
     void add_deposit() {
-        List<Transaction> transactionList = mock(List.class);
-
-        TransactionRecord transactionRecord = new TransactionRecord(transactionList);
+        TransactionRecord transactionRecord = new TransactionRecord(transactionsListMock);
         transactionRecord.addDeposit(AMOUNT);
 
-        verify(transactionList).add(isA(Transaction.class));
+        verify(transactionsListMock).add(isA(Transaction.class));
     }
 
     @Test
     void add_withdraw() {
-        List<Transaction> transactionList = mock(List.class);
-
-        TransactionRecord transactionRecord = new TransactionRecord(transactionList);
+        TransactionRecord transactionRecord = new TransactionRecord(transactionsListMock);
         transactionRecord.addWithdraw(AMOUNT);
 
-        verify(transactionList).add(isA(Transaction.class));
+        verify(transactionsListMock).add(isA(Transaction.class));
     }
 
     @Test
     void add_deposit_transaction_with_correct_amount() {
-        List<Transaction> transactionList = mock(List.class);
-
-        TransactionRecord transactionRecord = new TransactionRecord(transactionList);
+        TransactionRecord transactionRecord = new TransactionRecord(transactionsListMock);
         transactionRecord.addDeposit(AMOUNT);
 
         ArgumentCaptor<Transaction> argument = ArgumentCaptor.forClass(Transaction.class);
-        verify(transactionList).add(argument.capture());
+        verify(transactionsListMock).add(argument.capture());
 
         assertThat(argument.getValue().amount()).isEqualTo(AMOUNT);
     }
@@ -52,13 +53,11 @@ public class TransactionRecordShould {
     @Test
     void add_deposit_transaction_with_correct_balance() {
         int balance = 30;
-        List<Transaction> transactionList = mock(List.class);
-
-        TransactionRecord transactionRecord = new TransactionRecord(transactionList);
+        TransactionRecord transactionRecord = new TransactionRecord(transactionsListMock);
         transactionRecord.addDeposit(AMOUNT);
 
         ArgumentCaptor<Transaction> argument = ArgumentCaptor.forClass(Transaction.class);
-        verify(transactionList).add(argument.capture());
+        verify(transactionsListMock).add(argument.capture());
 
         assertThat(argument.getValue().balance()).isEqualTo(balance);
     }
