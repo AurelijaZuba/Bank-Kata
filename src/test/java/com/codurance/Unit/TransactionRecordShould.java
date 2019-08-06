@@ -29,14 +29,6 @@ public class TransactionRecordShould {
     }
 
     @Test
-    void add_withdraw() {
-        TransactionRecord transactionRecord = new TransactionRecord(transactionsListMock, clockMock);
-        transactionRecord.addWithdraw(AMOUNT);
-
-        verify(transactionsListMock).add(isA(Transaction.class));
-    }
-
-    @Test
     void add_deposit_with_valid_transaction() {
         final LocalDateTime dateTime = LocalDateTime.of(2019, Month.AUGUST, 02, 15, 19);
         int balance = 30;
@@ -55,7 +47,7 @@ public class TransactionRecordShould {
     }
 
     @Test
-    void add_withraw_with_valid_transaction() {
+    void add_withdraw_with_valid_transaction() {
         final LocalDateTime dateTime = LocalDateTime.of(2019, Month.AUGUST, 02, 15, 19);
         int balance = -30;
 
