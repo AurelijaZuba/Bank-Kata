@@ -33,6 +33,10 @@ public class AccountService {
         transactions.add(-amount);
     }
 
+    public void withdraw1(int amount) {
+        this.transactionRecord.addWithdraw(amount);
+    }
+
     public void printStatement() {
         List<String> statementLines = bankStatement.generate(transactions);
 
@@ -40,9 +44,5 @@ public class AccountService {
         for (String line : statementLines) {
             console.print(line);
         }
-    }
-
-    public void withdraw1(int amount) {
-        this.transactionRecord.addWithdraw(amount);
     }
 }
