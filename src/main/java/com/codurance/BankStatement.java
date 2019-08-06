@@ -14,4 +14,8 @@ public class BankStatement {
                 "02/08/2019 || -10 || 0",
                 "02/08/2019 || 10  || 10");
     }
+
+    public List<String> generate(TransactionRecord transactionRecord) {
+        throw new UnsupportedOperationException();
+    }
 }

@@ -87,4 +87,23 @@ public class AccountServiceShould {
         verify(consoleMock).print(transaction1);
         verify(consoleMock).print(transaction2);
     }
+
+    @Test
+    void printStatement1() {
+        TransactionRecord transactionRecord = mock(TransactionRecord.class);
+        final String statementHeader = "Date || Amount || Balance";
+        final String transaction1 = "01/08/2019 || -20 || 0";
+        final String transaction2 = "01/08/2019 || 20  || 20";
+
+        final List<String> statementLines = asList(statementHeader, transaction1, transaction2);
+        when(bankStatement.generate(transactionRecord)).thenReturn(statementLines);
+
+        AccountService accountService = new AccountService(consoleMock, transactionRecord, bankStatement);
+        accountService.printStatement();
+
+        verify(bankStatement).generate(transactionRecord);
+        verify(consoleMock).print(statementHeader);
+        verify(consoleMock).print(transaction1);
+        verify(consoleMock).print(transaction2);
+    }
 }
