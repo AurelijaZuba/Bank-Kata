@@ -49,4 +49,19 @@ public class TransactionRecordShould {
 
         assertThat(argument.getValue().amount()).isEqualTo(amount);
     }
+
+    @Test
+    void add_deposit_transaction_with_correct_balance() {
+        int amount = 30;
+        int balance = 30;
+        List<Transaction> transactionList = mock(List.class);
+
+        TransactionRecord transactionRecord = new TransactionRecord(transactionList);
+        transactionRecord.addDeposit(amount);
+
+        ArgumentCaptor<Transaction> argument = ArgumentCaptor.forClass(Transaction.class);
+        verify(transactionList).add(argument.capture());
+
+        assertThat(argument.getValue().balance()).isEqualTo(balance);
+    }
 }
