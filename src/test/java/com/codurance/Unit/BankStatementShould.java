@@ -28,22 +28,6 @@ public class BankStatementShould {
     @Test
     void generate_a_statement() {
         BankStatement bankStatement = new BankStatement();
-        List<Integer> transactions = asList(10, -10);
-
-        List<String> expectedStatement = asList(
-                "Date || Amount || Balance",
-                "02/08/2019 || -10 || 0",
-                "02/08/2019 || 10  || 10"
-        );
-
-        List<String> printableStatement = bankStatement.generate(transactions);
-
-        assertThat(printableStatement).isEqualTo(expectedStatement);
-    }
-
-    @Test
-    void generate_a_statement1() {
-        BankStatement bankStatement = new BankStatement();
         TransactionRecord transactions = new TransactionRecord();
         transactions.addDeposit(10);
         transactions.addWithdraw(10);
