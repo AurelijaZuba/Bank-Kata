@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-public class PrintBankStatement {
+public class PrintPrintableStatement {
 
     @Test
     void AcceptanceTest() {
@@ -26,9 +26,9 @@ public class PrintBankStatement {
         List<Transaction> transactions = new ArrayList<>();
         TransactionRecord transactionRecord = new TransactionRecord(transactions, clockMock);
 
-        BankStatement bankStatement = new BankStatement();
+        StatementFormatter statementFormatter = new PrintableStatement();
 
-        AccountService accountService = new AccountService(consoleMock, transactionRecord, bankStatement);
+        AccountService accountService = new AccountService(consoleMock, transactionRecord, statementFormatter);
         accountService.deposit(1000);
         accountService.deposit(2000);
         accountService.withdraw(500);

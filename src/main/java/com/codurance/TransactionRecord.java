@@ -35,6 +35,7 @@ public class TransactionRecord implements Iterable<Transaction>{
     private void updateBalance(int amount) {
         balance += amount;
     }
+
     @Override
     public Iterator iterator() {
         return this.transactions.iterator();
@@ -42,7 +43,6 @@ public class TransactionRecord implements Iterable<Transaction>{
 
     public List<Transaction> getTransactionsOrderedByDate() {
         List<Transaction> orderedList = new ArrayList<>();
-
 
         for (int i = transactions.size()-1; i >= 0; i--) {
             orderedList.add(transactions.get(i));

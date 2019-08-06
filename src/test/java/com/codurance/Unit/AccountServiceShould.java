@@ -1,9 +1,6 @@
 package com.codurance.Unit;
 
-import com.codurance.AccountService;
-import com.codurance.BankStatement;
-import com.codurance.ConsoleWrite;
-import com.codurance.TransactionRecord;
+import com.codurance.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,20 +13,20 @@ public class AccountServiceShould {
 
 
     private ConsoleWrite consoleMock;
-    private BankStatement bankStatement;
+    private StatementFormatter statementFormatter;
     private TransactionRecord transactionRecord;
 
     @BeforeEach
     void setUp() {
         consoleMock = mock(ConsoleWrite.class);
-        bankStatement = mock(BankStatement.class);
+        statementFormatter = mock(PrintableStatement.class);
         transactionRecord = mock(TransactionRecord.class);
     }
 
     @Test
     void deposit_amount() {
         int amount = 10;
-        AccountService accountService = new AccountService(consoleMock, transactionRecord, bankStatement);
+        AccountService accountService = new AccountService(consoleMock, transactionRecord, statementFormatter);
 
         accountService.deposit(amount);
 
@@ -40,7 +37,7 @@ public class AccountServiceShould {
     @Test
     void withdraw_amount() {
         int amount = 10;
-        AccountService accountService = new AccountService(consoleMock, transactionRecord, bankStatement);
+        AccountService accountService = new AccountService(consoleMock, transactionRecord, statementFormatter);
 
         accountService.withdraw(amount);
 
@@ -48,18 +45,18 @@ public class AccountServiceShould {
     }
 
     @Test
-    void printStatement() {
+    void print_statement() {
         final String statementHeader = "Date || Amount || Balance";
         final String transaction1 = "01/08/2019 || -20 || 0";
         final String transaction2 = "01/08/2019 || 20  || 20";
 
         final List<String> statementLines = asList(statementHeader, transaction1, transaction2);
-        when(bankStatement.generate(transactionRecord)).thenReturn(statementLines);
+        when(statementFormatter.generate(transactionRecord)).thenReturn(statementLines);
 
-        AccountService accountService = new AccountService(consoleMock, transactionRecord, bankStatement);
+        AccountService accountService = new AccountService(consoleMock, transactionRecord, statementFormatter);
         accountService.printStatement();
 
-        verify(bankStatement).generate(transactionRecord);
+        verify(statementFormatter).generate(transactionRecord);
         verify(consoleMock).print(statementHeader);
         verify(consoleMock).print(transaction1);
         verify(consoleMock).print(transaction2);
