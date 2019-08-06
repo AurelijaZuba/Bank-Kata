@@ -37,9 +37,9 @@ public class PrintBankStatement {
 
         InOrder inOrder = inOrder(consoleMock);
         inOrder.verify(consoleMock).print("Date || Amount || Balance");
-        inOrder.verify(consoleMock).print("14/01/2012 || -500   || 2500");
-        inOrder.verify(consoleMock).print("13/01/2012 || 2000   || 3000");
-        inOrder.verify(consoleMock).print("10/01/2012 || 1000   || 1000");
+        inOrder.verify(consoleMock).print("14/01/2012\t||\t-500\t||\t2500");
+        inOrder.verify(consoleMock).print("13/01/2012\t||\t2000\t||\t3000");
+        inOrder.verify(consoleMock).print("10/01/2012\t||\t1000\t||\t1000");
 
     }
 }

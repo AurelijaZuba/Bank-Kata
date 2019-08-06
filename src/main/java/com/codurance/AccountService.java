@@ -25,7 +25,6 @@ public class AccountService {
         List<String> statementLines = bankStatement.generate(transactionRecord);
 
         for (String line : statementLines) {
-            System.out.println(line);
             console.print(line);
         }
     }
