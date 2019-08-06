@@ -17,18 +17,21 @@ public class TransactionRecord implements Iterable<Transaction>{
     }
 
     public void addDeposit(int amount) {
-        balance += amount;
+        updateBalance(amount);
         transactions.add(new Transaction("02/08/2019", amount, balance));
     }
 
     public void addWithdraw(int amount) {
-        transactions.add(new Transaction("02/08/2019", 20, amount));
+        transactions.add(new Transaction("02/08/2019", 20, 0));
     }
 
     public boolean hasTransactions() {
         return !transactions.isEmpty();
     }
 
+    private void updateBalance(int amount) {
+        balance += amount;
+    }
     @Override
     public Iterator iterator() {
         return this.transactions.iterator();

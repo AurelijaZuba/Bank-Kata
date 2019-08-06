@@ -1,11 +1,7 @@
 package com.codurance;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-
-import static java.util.Arrays.asList;
 
 public class BankStatement {
 
@@ -16,12 +12,13 @@ public class BankStatement {
         statementLines.add(STATEMENT_HEADER);
         if(transactionRecord.hasTransactions())
             for (Transaction transaction : transactionRecord) {
-                String transactionDate = transaction.date();
-                int transactionAmount = transaction.amount();
-                int transactionBalance = transaction.balance();
-                statementLines.add(transactionDate + "\t||\t" + transactionAmount + "\t||\t" + transactionBalance);
+                statementLines.add(formatStatementLine(transaction.date(), transaction.amount(), transaction.balance()));
             }
 
         return statementLines;
+    }
+
+    private String formatStatementLine(String transactionDate, int transactionAmount, int transactionBalance) {
+        return transactionDate + "\t||\t" + transactionAmount + "\t||\t" + transactionBalance;
     }
 }
