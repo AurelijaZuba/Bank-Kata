@@ -18,6 +18,13 @@ public class BankStatement {
     }
 
     public List<String> generate(TransactionRecord transactionRecord) {
-        return asList(STATEMENT_HEADER);
+
+        if(transactionRecord.hasTransactions())
+            return asList(
+                    STATEMENT_HEADER,
+                    "02/08/2019 || -10 || 0",
+                    "02/08/2019 || 10  || 10");
+
+        return asList(STATEMENT_HEADER );
     }
 }

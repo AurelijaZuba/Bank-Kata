@@ -45,6 +45,8 @@ public class BankStatementShould {
     void generate_a_statement1() {
         BankStatement bankStatement = new BankStatement();
         TransactionRecord transactions = new TransactionRecord();
+        transactions.addDeposit(10);
+        transactions.addWithdraw(10);
 
         List<String> expectedStatement = asList(
                 "Date || Amount || Balance",

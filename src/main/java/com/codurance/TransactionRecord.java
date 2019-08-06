@@ -21,4 +21,8 @@ public class TransactionRecord {
     public void addWithdraw(int amount) {
         transactions.add(new Transaction(amount));
     }
+
+    public boolean hasTransactions() {
+        return !transactions.isEmpty();
+    }
 }
