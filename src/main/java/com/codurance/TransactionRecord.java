@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionRecord {
+    private final List<Transaction> transactions;
+
     public TransactionRecord(List<Transaction> transactionList) {
-        throw new UnsupportedOperationException();
+        this.transactions = transactionList;
     }
 
     public TransactionRecord() {
-        List<Transaction> transactions = new ArrayList<>();
+        this.transactions = new ArrayList<>();
     }
 
     public void addDeposit(int amount) {
-        throw new UnsupportedOperationException();
+        transactions.add(new Transaction(amount));
     }
 
     public void addWithdraw(int amount) {

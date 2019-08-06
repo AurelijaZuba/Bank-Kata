@@ -22,4 +22,15 @@ public class TransactionRecordShould {
 
         verify(transactionList).add(isA(Transaction.class));
     }
+
+    @Test
+    void add_withdraw() {
+        int amount = 30;
+        List<Transaction> transactionList = mock(List.class);
+
+        TransactionRecord transactionRecord = new TransactionRecord(transactionList);
+        transactionRecord.addWithdraw(amount);
+
+        verify(transactionList).add(isA(Transaction.class));
+    }
 }
