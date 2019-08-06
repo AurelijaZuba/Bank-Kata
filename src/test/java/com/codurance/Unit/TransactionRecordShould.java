@@ -53,4 +53,22 @@ public class TransactionRecordShould {
         assertThat(argument.getValue().amount()).isEqualTo(AMOUNT);
         assertThat(argument.getValue().balance()).isEqualTo(balance);
     }
+
+    @Test
+    void add_withraw_with_valid_transaction() {
+        final LocalDateTime dateTime = LocalDateTime.of(2019, Month.AUGUST, 02, 15, 19);
+        int balance = -30;
+
+        when(clockMock.now()).thenReturn(dateTime);
+
+        TransactionRecord transactionRecord = new TransactionRecord(transactionsListMock, clockMock);
+        transactionRecord.addWithdraw(AMOUNT);
+
+        ArgumentCaptor<Transaction> argument = ArgumentCaptor.forClass(Transaction.class);
+        verify(transactionsListMock).add(argument.capture());
+
+        assertThat(argument.getValue().date()).isEqualTo(dateTime);
+        assertThat(argument.getValue().amount()).isEqualTo(-AMOUNT);
+        assertThat(argument.getValue().balance()).isEqualTo(balance);
+    }
 }
