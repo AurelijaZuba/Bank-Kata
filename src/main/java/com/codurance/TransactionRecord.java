@@ -4,10 +4,12 @@ import java.util.*;
 
 public class TransactionRecord implements Iterable<Transaction>{
     private final List<Transaction> transactions;
+    private LocalClock clock;
     private int balance;
 
     public TransactionRecord(List<Transaction> transactionList, LocalClock clock) {
         this.transactions = transactionList;
+        this.clock = clock;
         balance = 0;
     }
 
@@ -18,11 +20,11 @@ public class TransactionRecord implements Iterable<Transaction>{
 
     public void addDeposit(int amount) {
         updateBalance(amount);
-        transactions.add(new Transaction("02/08/2019", amount, balance));
+        transactions.add(new Transaction(clock.now(), amount, balance));
     }
 
     public void addWithdraw(int amount) {
-        transactions.add(new Transaction("02/08/2019", 20, 0));
+        transactions.add(new Transaction(clock.now(), 20, 0));
     }
 
     public boolean hasTransactions() {

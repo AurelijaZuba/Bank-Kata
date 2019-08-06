@@ -12,7 +12,7 @@ public class BankStatement {
         statementLines.add(STATEMENT_HEADER);
         if(transactionRecord.hasTransactions())
             for (Transaction transaction : transactionRecord) {
-                statementLines.add(formatStatementLine(transaction.date(), transaction.amount(), transaction.balance()));
+                statementLines.add(formatStatementLine(transaction.formattedDate(), transaction.amount(), transaction.balance()));
             }
 
         return statementLines;
