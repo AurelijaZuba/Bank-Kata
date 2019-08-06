@@ -25,4 +25,20 @@ public class BankStatementShould {
 
         assertThat(printableStatement).isEqualTo(expectedStatement);
     }
+
+    @Test
+    void generate_statement_header() {
+        BankStatement bankStatement = new BankStatement();
+        List<Integer> transactions = asList();
+
+        List<String> expectedStatement = asList(
+                "Date || Amount || Balance"
+        );
+
+        List<String> printableStatement = bankStatement.generate(transactions);
+
+
+        assertThat(printableStatement).isEqualTo(expectedStatement);
+
+    }
 }
