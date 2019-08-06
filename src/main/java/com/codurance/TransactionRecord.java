@@ -39,4 +39,15 @@ public class TransactionRecord implements Iterable<Transaction>{
     public Iterator iterator() {
         return this.transactions.iterator();
     }
+
+    public List<Transaction> getTransactionsOrderedByDate() {
+        List<Transaction> orderedList = new ArrayList<>();
+
+
+        for (int i = transactions.size()-1; i >= 0; i--) {
+            orderedList.add(transactions.get(i));
+        }
+
+        return orderedList;
+    }
 }

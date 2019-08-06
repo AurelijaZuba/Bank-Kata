@@ -11,7 +11,7 @@ public class BankStatement {
         List<String> statementLines = new ArrayList<>();
         statementLines.add(STATEMENT_HEADER);
         if(transactionRecord.hasTransactions())
-            for (Transaction transaction : transactionRecord) {
+            for (Transaction transaction : transactionRecord.getTransactionsOrderedByDate()) {
                 statementLines.add(formatStatementLine(transaction.formattedDate(), transaction.amount(), transaction.balance()));
             }
 
