@@ -10,6 +10,21 @@ import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BankStatementShould {
+
+    @Test
+    void generate_statement_header() {
+        BankStatement bankStatement = new BankStatement();
+        TransactionRecord transactions = new TransactionRecord();
+
+        List<String> expectedStatement = asList(
+                "Date || Amount || Balance"
+        );
+
+        List<String> printableStatement = bankStatement.generate(transactions);
+
+        assertThat(printableStatement).isEqualTo(expectedStatement);
+    }
+
     @Test
     void generate_a_statement() {
         BankStatement bankStatement = new BankStatement();
@@ -27,12 +42,14 @@ public class BankStatementShould {
     }
 
     @Test
-    void generate_statement_header() {
+    void generate_a_statement1() {
         BankStatement bankStatement = new BankStatement();
         TransactionRecord transactions = new TransactionRecord();
 
         List<String> expectedStatement = asList(
-                "Date || Amount || Balance"
+                "Date || Amount || Balance",
+                "02/08/2019 || -10 || 0",
+                "02/08/2019 || 10  || 10"
         );
 
         List<String> printableStatement = bankStatement.generate(transactions);
