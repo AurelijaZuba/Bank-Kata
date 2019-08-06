@@ -63,4 +63,6 @@ public class TransactionRecordShould {
         assertThat(argument.getValue().amount()).isEqualTo(-AMOUNT);
         assertThat(argument.getValue().balance()).isEqualTo(balance);
     }
+
+
 }

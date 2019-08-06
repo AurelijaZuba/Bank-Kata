@@ -71,7 +71,7 @@ public class BankStatementShould {
         Transaction transaction1 = new Transaction(dateTime1, 20, 20);
         Transaction transaction2 = new Transaction(dateTime1.plusMinutes(1), -10, 10);
         Transaction transaction3 = new Transaction(dateTime1.plusMinutes(2), -10, 0);
-        List<Transaction> mockTransactions = asList(transaction3, transaction2, transaction1);
+        List<Transaction> mockTransactions = asList(transaction1, transaction2, transaction3);
         when(transactionsMock.iterator()).thenReturn(mockTransactions.iterator());
         when(transactionsMock.hasTransactions()).thenReturn(true);
 
