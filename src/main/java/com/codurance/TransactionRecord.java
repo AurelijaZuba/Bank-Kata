@@ -6,7 +6,7 @@ public class TransactionRecord implements Iterable<Transaction>{
     private final List<Transaction> transactions;
     private int balance;
 
-    public TransactionRecord(List<Transaction> transactionList) {
+    public TransactionRecord(List<Transaction> transactionList, LocalClock clock) {
         this.transactions = transactionList;
         balance = 0;
     }
