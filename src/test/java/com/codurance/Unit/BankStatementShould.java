@@ -39,6 +39,4 @@ public class BankStatementShould {
 
         assertThat(printableStatement).isEqualTo(expectedStatement);
     }
-
-    
 }

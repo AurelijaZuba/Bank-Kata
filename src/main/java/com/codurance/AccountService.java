@@ -1,9 +1,11 @@
 package com.codurance;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountService {
     private ConsoleWrite console;
+    private TransactionRecord transactionRecord;
     private List<Integer> transactions;
     private BankStatement bankStatement;
 
@@ -11,6 +13,13 @@ public class AccountService {
         this.console = console;
         this.transactions = transactions;
         this.bankStatement = bankStatement;
+    }
+
+    public AccountService(ConsoleWrite console, TransactionRecord transactionRecord, BankStatement bankStatement) {
+        this.console = console;
+        this.transactionRecord = transactionRecord;
+        this.bankStatement = bankStatement;
+        this.transactions = new ArrayList<>();
     }
 
     public void deposit(int amount) {

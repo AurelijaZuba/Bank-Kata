@@ -3,6 +3,7 @@ package com.codurance.Unit;
 import com.codurance.AccountService;
 import com.codurance.BankStatement;
 import com.codurance.ConsoleWrite;
+import com.codurance.TransactionRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +34,17 @@ public class AccountServiceShould {
         accountService.deposit(amount);
 
         verify(transactionListMock).add(amount);
+    }
+
+    @Test
+    void deposit_amount1() {
+        int amount = 10;
+        TransactionRecord transactionRecords = mock(TransactionRecord.class);
+        AccountService accountService = new AccountService(consoleMock, transactionRecords, bankStatement);
+
+        accountService.deposit(amount);
+
+        verify(transactionRecords).addDeposit(amount);
     }
 
 
