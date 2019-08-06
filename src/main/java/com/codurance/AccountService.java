@@ -45,4 +45,12 @@ public class AccountService {
             console.print(line);
         }
     }
+
+    public void printStatement1() {
+        List<String> statementLines = bankStatement.generate(transactionRecord);
+
+        for (String line : statementLines) {
+            console.print(line);
+        }
+    }
 }

@@ -99,7 +99,7 @@ public class AccountServiceShould {
         when(bankStatement.generate(transactionRecord)).thenReturn(statementLines);
 
         AccountService accountService = new AccountService(consoleMock, transactionRecord, bankStatement);
-        accountService.printStatement();
+        accountService.printStatement1();
 
         verify(bankStatement).generate(transactionRecord);
         verify(consoleMock).print(statementHeader);
