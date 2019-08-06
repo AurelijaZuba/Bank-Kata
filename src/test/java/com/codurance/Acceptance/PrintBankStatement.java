@@ -42,7 +42,6 @@ public class PrintBankStatement {
         ConsoleWrite consoleMock = mock(ConsoleWrite.class);
         BankStatement bankStatement = new BankStatement();
 
-
         TransactionRecord transactionRecord = new TransactionRecord();
         AccountService accountService = new AccountService(consoleMock, transactionRecord, bankStatement);
         accountService.deposit1(1000);
