@@ -26,7 +26,7 @@ public class BankStatementShould {
     }
 
     @Test
-    void generate_a_statement() {
+    void generate_a_statement_with_two_transactions() {
         BankStatement bankStatement = new BankStatement();
         TransactionRecord transactions = new TransactionRecord();
         transactions.addDeposit(10);
@@ -42,4 +42,25 @@ public class BankStatementShould {
 
         assertThat(printableStatement).isEqualTo(expectedStatement);
     }
+
+    @Test
+    void generate_a_statement_with_three_transactions() {
+        BankStatement bankStatement = new BankStatement();
+        TransactionRecord transactions = new TransactionRecord();
+        transactions.addDeposit(20);
+        transactions.addWithdraw(10);
+        transactions.addWithdraw(10);
+
+        List<String> expectedStatement = asList(
+                "Date || Amount || Balance",
+                "02/08/2019 || -10 || 0",
+                "02/08/2019 || -10 || 10",
+                "02/08/2019 || 20  || 20"
+        );
+
+        List<String> printableStatement = bankStatement.generate(transactions);
+
+        assertThat(printableStatement).isEqualTo(expectedStatement);
+    }
+
 }
