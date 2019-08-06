@@ -37,8 +37,8 @@ public class BankStatementShould {
 
         List<String> printableStatement = bankStatement.generate(transactions);
 
-
         assertThat(printableStatement).isEqualTo(expectedStatement);
-
     }
+
+    
 }
