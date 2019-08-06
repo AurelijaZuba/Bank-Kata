@@ -42,7 +42,7 @@ public class TransactionRecordShould {
         List<Transaction> transactionList = mock(List.class);
 
         TransactionRecord transactionRecord = new TransactionRecord(transactionList);
-        transactionRecord.addWithdraw(amount);
+        transactionRecord.addDeposit(amount);
 
         ArgumentCaptor<Transaction> argument = ArgumentCaptor.forClass(Transaction.class);
         verify(transactionList).add(argument.capture());
