@@ -19,11 +19,14 @@ public class AccountService {
         this.console = console;
         this.transactionRecord = transactionRecord;
         this.bankStatement = bankStatement;
-        this.transactions = new ArrayList<>();
     }
 
     public void deposit(int amount) {
         transactions.add(amount);
+    }
+
+    public void deposit1(int amount) {
+        transactionRecord.addDeposit(amount);
     }
 
     public void withdraw(int amount) {
@@ -37,5 +40,9 @@ public class AccountService {
         for (String line : statementLines) {
             console.print(line);
         }
+    }
+
+    public void withdraw1(int amount) {
+        new UnsupportedOperationException();
     }
 }

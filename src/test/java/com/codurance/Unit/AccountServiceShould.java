@@ -42,7 +42,7 @@ public class AccountServiceShould {
         TransactionRecord transactionRecords = mock(TransactionRecord.class);
         AccountService accountService = new AccountService(consoleMock, transactionRecords, bankStatement);
 
-        accountService.deposit(amount);
+        accountService.deposit1(amount);
 
         verify(transactionRecords).addDeposit(amount);
     }
@@ -56,6 +56,17 @@ public class AccountServiceShould {
         accountService.withdraw(amount);
 
         verify(transactionListMock).add(-amount);
+    }
+
+    @Test
+    void withdraw_amount1() {
+        int amount = 10;
+        TransactionRecord transactionRecords = mock(TransactionRecord.class);
+        AccountService accountService = new AccountService(consoleMock, transactionRecords, bankStatement);
+
+        accountService.withdraw1(amount);
+
+        verify(transactionRecords).addWithdraw(amount);
     }
 
     @Test
