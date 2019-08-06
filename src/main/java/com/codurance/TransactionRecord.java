@@ -19,6 +19,6 @@ public class TransactionRecord {
     }
 
     public void addWithdraw(int amount) {
-        throw new UnsupportedOperationException();
+        transactions.add(new Transaction(amount));
     }
 }
