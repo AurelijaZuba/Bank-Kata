@@ -5,17 +5,19 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class BankStatement {
+
+    public static final String STATEMENT_HEADER = "Date || Amount || Balance";
+
     public List<String> generate(List<Integer> transactions) {
-        final String statementHeader = "Date || Amount || Balance";
         if(transactions.isEmpty())
-            return asList(statementHeader);
+            return asList(STATEMENT_HEADER);
         return asList(
-                statementHeader,
+                STATEMENT_HEADER,
                 "02/08/2019 || -10 || 0",
                 "02/08/2019 || 10  || 10");
     }
 
     public List<String> generate(TransactionRecord transactionRecord) {
-        throw new UnsupportedOperationException();
+        return asList(STATEMENT_HEADER);
     }
 }
