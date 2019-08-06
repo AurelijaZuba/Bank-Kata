@@ -3,6 +3,7 @@ package com.codurance.Unit;
 import com.codurance.BankStatement;
 import com.codurance.Transaction;
 import com.codurance.TransactionRecord;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
@@ -14,6 +15,13 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class BankStatementShould {
+
+    private TransactionRecord transactionsMock;
+
+    @BeforeEach
+    void setUp() {
+        transactionsMock = mock(TransactionRecord.class);
+    }
 
     @Test
     void generate_statement_header() {
@@ -55,8 +63,6 @@ public class BankStatementShould {
     @Test
     void generate_a_statement_with_three_transactions() {
         BankStatement bankStatement = new BankStatement();
-
-        TransactionRecord transactionsMock = mock(TransactionRecord.class);
 
         Transaction transaction1 = new Transaction("02/08/2019", 20, 20);
         Transaction transaction2 = new Transaction("02/08/2019", -10, 10);
