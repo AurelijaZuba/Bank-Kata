@@ -1,9 +1,8 @@
 package com.codurance;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class TransactionRecord {
+public class TransactionRecord implements Iterable<Transaction>{
     private final List<Transaction> transactions;
 
     public TransactionRecord(List<Transaction> transactionList) {
@@ -15,14 +14,19 @@ public class TransactionRecord {
     }
 
     public void addDeposit(int amount) {
-        transactions.add(new Transaction(amount));
+        transactions.add(new Transaction("02/08/2019", 20, amount));
     }
 
     public void addWithdraw(int amount) {
-        transactions.add(new Transaction(amount));
+        transactions.add(new Transaction("02/08/2019", 20, amount));
     }
 
     public boolean hasTransactions() {
         return !transactions.isEmpty();
+    }
+
+    @Override
+    public Iterator iterator() {
+        return this.transactions.iterator();
     }
 }

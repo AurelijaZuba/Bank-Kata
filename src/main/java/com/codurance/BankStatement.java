@@ -1,5 +1,8 @@
 package com.codurance;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -18,13 +21,16 @@ public class BankStatement {
     }
 
     public List<String> generate(TransactionRecord transactionRecord) {
-
+        List<String> statementLines = new ArrayList<>();
+        statementLines.add(STATEMENT_HEADER);
         if(transactionRecord.hasTransactions())
-            return asList(
-                    STATEMENT_HEADER,
-                    "02/08/2019 || -10 || 0",
-                    "02/08/2019 || 10  || 10");
+            for (Transaction transaction : transactionRecord) {
+                String transactionDate = transaction.date();
+                int transactionAmount = transaction.amount();
+                int transactionBalance = transaction.balance();
+                statementLines.add(transactionDate + "\t||\t" + transactionAmount + "\t||\t" + transactionBalance);
+            }
 
-        return asList(STATEMENT_HEADER );
+        return statementLines;
     }
 }
