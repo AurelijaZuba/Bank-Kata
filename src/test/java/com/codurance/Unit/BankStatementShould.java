@@ -29,20 +29,6 @@ public class BankStatementShould {
     @Test
     void generate_statement_header() {
         BankStatement bankStatement = new BankStatement();
-        List<Integer> transactions = asList();
-
-        List<String> expectedStatement = asList(
-                "Date || Amount || Balance"
-        );
-
-        List<String> printableStatement = bankStatement.generate(transactions);
-
-        assertThat(printableStatement).isEqualTo(expectedStatement);
-    }
-
-    @Test
-    void generate_statement_header1() {
-        BankStatement bankStatement = new BankStatement();
         TransactionRecord transactions = new TransactionRecord();
 
         List<String> expectedStatement = asList(
